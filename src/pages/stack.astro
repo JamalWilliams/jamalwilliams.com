@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="The Sovereign Stack | Jamal Williams">
+	<section class="space-y-12 py-20 animate-fade-in">
+		<header class="space-y-4">
+			<a href="/" class="text-slate-500 hover:text-white transition-colors flex items-center gap-2 mb-8">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+				Back Home
+			</a>
+			<h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl font-display animate-slide-up">
+				The Sovereign <span class="text-gradient">Stack</span>
+			</h1>
+			<p class="text-xl text-slate-400 max-w-2xl animate-slide-up" style="animation-delay: 0.1s;">
+				Owning the infrastructure of my own narrative. High performance, zero bloat, maximum freedom.
+			</p>
+		</header>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up" style="animation-delay: 0.2s;">
+			<!-- Astro -->
+			<div class="glass p-8 rounded-3xl space-y-4">
+				<div class="text-blue-400 font-bold font-display text-lg">Astro 5.0</div>
+				<p class="text-slate-400 text-sm">The engine. Zero JavaScript by default, enabling high-resolution photography to load almost instantly without plugin bloat.</p>
+			</div>
+
+			<!-- Cloudflare -->
+			<div class="glass p-8 rounded-3xl space-y-4">
+				<div class="text-orange-400 font-bold font-display text-lg">Cloudflare Pages</div>
+				<p class="text-slate-400 text-sm">Global edge delivery. Commercial-friendly hosting that offers unlimited bandwidth and automated Git deployments.</p>
+			</div>
+
+			<!-- Obsidian -->
+			<div class="glass p-8 rounded-3xl space-y-4">
+				<div class="text-purple-400 font-bold font-display text-lg">Obsidian / Markdown</div>
+				<p class="text-slate-400 text-sm">The CMS. My knowledge vault is my database. I write in local Markdown, and Git handles the sync to the live site.</p>
+			</div>
+
+			<!-- Tailwind -->
+			<div class="glass p-8 rounded-3xl space-y-4">
+				<div class="text-cyan-400 font-bold font-display text-lg">Tailwind CSS</div>
+				<p class="text-slate-400 text-sm">The styling. Utility-first design that allows for rapid, expressive visual systems without the weight of traditional CSS frameworks.</p>
+			</div>
+		</div>
+
+		<div class="glass p-8 md:p-12 rounded-3xl space-y-6 animate-slide-up" style="animation-delay: 0.3s;">
+			<h2 class="text-2xl font-bold text-white font-display">Why this stack?</h2>
+			<div class="space-y-4 text-slate-300 leading-relaxed">
+				<p>
+					WordPress is powerful but heavy. Social media platforms are convenient but you don't own the data. 
+				</p>
+				<p>
+					By shifting to a <strong>Static + Git + Markdown</strong> workflow, I've stripped away the vulnerabilities and database maintenance. My sites are now safer, faster, and truly sovereign.
+				</p>
+			</div>
+		</div>
+
+		<footer class="pt-8 text-center">
+			<a href="/manifesto" class="btn-primary">Back to the Manifesto</a>
+		</footer>
+	</section>
+</Layout>
