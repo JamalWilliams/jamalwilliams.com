@@ -1,16 +1,19 @@
 ---
+import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { getEntry, render } from 'astro:content';
 
-const manifesto = await getEntry('pages', 'manifesto');
-if (!manifesto) {
-    return Astro.redirect('/404');
+export async function getStaticPaths() {
+	const pages = await getCollection('pages');
+	return pages.map(entry => ({
+		params: { slug: entry.id }, props: { entry },
+	}));
 }
 
-const { Content } = await render(manifesto);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 ---
 
-<Layout title={`${manifesto.data.title} | Jamal Williams`}>
+<Layout title={`${entry.data.title} | Jamal Williams`}>
 	<section class="space-y-12 py-20 animate-fade-in">
 		<header class="space-y-4">
 			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group">
@@ -18,17 +21,24 @@ const { Content } = await render(manifesto);
 				Back Home
 			</a>
 			<h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl font-display animate-slide-up">
-				The Generalist <span class="text-gradient">Manifesto</span>
+				{(() => {
+					const safeTitle = entry.data.title || entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
+					const parts = safeTitle.split(' ');
+					return (
+						<>
+							{parts[0]} <span class="text-gradient">{parts.slice(1).join(' ')}</span>
+						</>
+					);
+				})()}
 			</h1>
+			<p class="text-2xl text-light-gray/60 font-display animate-slide-up" style="animation-delay: 0.1s;">
+				{entry.data.description}
+			</p>
 		</header>
 
-		<div class="glass p-8 md:p-12 rounded-3xl space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none" style="animation-delay: 0.1s;">
+		<div class="glass p-8 md:p-12 rounded-3xl space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none" style="animation-delay: 0.2s;">
 			<Content />
 		</div>
-
-		<footer class="pt-12 flex justify-between">
-			<a href="/principles" class="btn-primary">View Principles</a>
-		</footer>
 	</section>
 </Layout>
 

@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const practiceEntries = await getCollection('practice');
+	return practiceEntries.map(entry => ({
+		params: { slug: entry.id }, props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} | Jamal Williams`}>
+	<section class="space-y-12 py-20 animate-fade-in">
+		<header class="space-y-4">
+			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+				Back Home
+			</a>
+			<h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl font-display animate-slide-up">
+				{(() => {
+					const safeTitle = entry.data.title || entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
+					const parts = safeTitle.split(' ');
+					return (
+						<>
+							{parts[0]} <span class="text-gradient">{parts.slice(1).join(' ')}</span>
+						</>
+					);
+				})()}
+			</h1>
+			<p class="text-2xl text-light-gray/60 font-display animate-slide-up" style="animation-delay: 0.1s;">
+				{entry.data.description}
+			</p>
+		</header>
+
+		<div class="glass p-8 md:p-12 rounded-3xl space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none" style="animation-delay: 0.2s;">
+			<Content />
+		</div>
+
+		{entry.data.link && (
+			<div class="flex justify-center pt-8">
+				<a href={entry.data.link} class="btn-primary">Visit {entry.data.title}</a>
+			</div>
+		)}
+	</section>
+</Layout>
+
+<style is:global>
+	@reference "../../styles/global.css";
+	.prose h1, .prose h2, .prose h3 {
+		@apply font-display text-white font-bold;
+	}
+	.prose h3 {
+		@apply text-gold-1 mt-12 mb-4;
+	}
+	.prose p {
+		@apply mb-6;
+	}
+	.prose strong {
+		@apply text-white font-bold;
+	}
+	.prose blockquote {
+		@apply border-l-4 border-gold-1 pl-6 py-2 italic text-white text-xl my-8;
+	}
+    .prose ul {
+        @apply space-y-4 my-8;
+    }
+    .prose li {
+        @apply list-disc list-inside;
+    }
+</style>
