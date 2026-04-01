@@ -1,25 +1,31 @@
 # Developer Context: jamalwilliams.com
 
-## Architecture
-- **Framework**: Astro (Static Site Generation/SSR)
+## Architecture (Jamal 3.0)
+- **Framework**: Astro 5.0+ (Static Site Generation / Content Layer API)
+- **CMS**: Headless via **Obsidian Vault** (`Vault/Websites/jamalwilliams.com/`)
+- **Integration**: Framework-native (No sync scripts or symlinks)
 - **Styling**: Tailwind CSS v4 (via `@tailwindcss/vite` plugin)
-- **Deployment**: Configured for Cloudflare (inferred from footer)
+- **Deployment**: Configured for Cloudflare
 
-## Folder Structure
-- `/src`
-  - `/layouts`: Contains main `Layout.astro` wrapper for injecting global fonts, metadata, and core structural classes.
-  - `/pages`: Contains route definitions like `index.astro`.
-  - `/styles`: Contains `global.css` importing Tailwind and defining `@theme` overrides.
-- `/public`: Static assets (favicon, etc).
+## Headless CMS Implementation
+- **Loader**: Astro's native `glob` loader with `base` set to the Vault path.
+- **Environment**: `VAULT_CONTENT_PATH` defined in `.env`.
+- **Vite Security**: `server.fs.allow` configured in `astro.config.mjs` to authorize the external Vault path.
+- **Media**: External `media/` folder linked directly to `public/media/` (or served via Vite config).
 
-## Database/Schema
-- No active Supabase schema configured yet. Site currently serves static portfolio content linking to JW Intimates and A Narrative Lens.
+## Folder Structure (Obsidian Vault)
+- `site/pages/`: Main site pages (about, principles, stack, homepage).
+- `site/practice/`: Business pillar entries (jwi, nl, sovereign-life).
+- `site/posts/`: Blog content.
+- `site/media/`: All images and assets (accessible via `/media/`).
+
+## Dynamic Logic
+- **Homepage**: Content and hero image driven by `site/pages/homepage.md`.
+- **Navigation**: Sticky glassmorphic pill driven by the `menu` array in `homepage.md`.
+- **Ordering**: Controlled via the `order` field in page frontmatter.
 
 ## Styling Philosophy
 - **Base Mode**: Dark theme (`bg-slate-950`).
-- **Brand Colors**: 
-  - Slate for deep backgrounds and subtle text (`slate-900`, `slate-950`, `slate-400`).
-  - Blue (`blue-500`) used primarily as an accent for JW Intimates.
-  - Emerald (`emerald-500`) used primarily as an accent for A Narrative Lens.
-- **Vibe**: Sovereign Storyteller, Digital Architect. Flashy but professional. Employs modern web design elements (glassmorphism, clean micro-animations, radiant blurred backgrounds) without betraying the core palette.
-- **Typography**: `Outfit` for display/headings, `Inter` for functional/body text.
+- **Brand Colors**: Slate, Blue (JWI), Emerald (NL), Gold-1/Gold-2 (Accents).
+- **Vibe**: Sovereign Storyteller, Digital Architect. High-end, architectural, professional.
+- **Typography**: `Outfit` (Headings), `Inter` (Body).

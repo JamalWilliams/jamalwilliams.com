@@ -4,9 +4,10 @@ import { getCollection, getEntry } from 'astro:content';
 
 interface Props {
 	title: string;
+	fullWidth?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, fullWidth = false } = Astro.props;
 
 // Fetch navigation settings from homepage
 const homepage = await getEntry('pages', 'homepage');
@@ -45,32 +46,37 @@ const currentPath = Astro.url.pathname;
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body class="bg-navy text-light-gray font-sans selection:bg-gold-1/30 relative min-h-screen overflow-x-hidden pt-20">
+	<body class="bg-navy text-light-gray font-sans selection:bg-gold-1/30 relative min-h-screen overflow-x-hidden pt-24 sm:pt-32">
+		<!-- Background Branding Mark (Architectural Watermark) -->
+		<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none flex items-center justify-center opacity-[0.04]">
+			<span class="font-architectural text-[25vw] leading-none whitespace-nowrap text-white">SOVEREIGN</span>
+		</div>
+
 		<!-- Decorative background glows -->
-		<div class="fixed inset-0 z-[-1] pointer-events-none selection:bg-transparent">
+		<div class="fixed inset-0 z-0 pointer-events-none selection:bg-transparent">
 			<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold-1/5 blur-[120px] mix-blend-screen opacity-60 animate-float"></div>
 			<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-light-gray/5 blur-[100px] mix-blend-screen opacity-60 animate-float" style="animation-delay: -3s;"></div>
 		</div>
 
-		<!-- Sticky Navigation -->
-		<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-2xl px-6 py-3 glass rounded-full border border-white/10 shadow-2xl backdrop-blur-xl">
-			<div class="flex items-center justify-between">
-				<a href="/" class="text-white font-display font-bold text-lg hover:text-gold-1 transition-colors group flex items-center gap-2">
-					<img src="/media/Jamal_Profile.png" alt="Jamal" class="w-8 h-8 rounded-full border border-white/20 object-cover group-hover:scale-110 group-hover:border-gold-1/50 transition-all duration-300" />
-					<span class="hidden sm:inline">Jamal.</span>
+		<!-- Refined Sticky Navigation -->
+		<nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-auto px-1 py-1 glass rounded-full border border-white/10 shadow-2xl backdrop-blur-xl">
+			<div class="flex items-center gap-1 sm:gap-2">
+				<a href="/" class="pl-4 pr-3 py-2 text-white font-display font-bold text-lg hover:text-gold-1 transition-colors group flex items-center gap-2">
+					<img src="/media/Jamal_Profile.png" alt="Jamal" class="w-7 h-7 rounded-full border border-white/20 object-cover group-hover:scale-110 group-hover:border-gold-1/50 transition-all duration-300" />
+					<span class="hidden sm:inline text-sm uppercase tracking-widest">Jamal.</span>
 				</a>
 				
-				<ul class="flex items-center gap-1 sm:gap-2">
+				<ul class="flex items-center gap-1 pr-1">
 					{navLinks.map(link => (
 						<li>
 							<a 
 								href={link.href} 
-								class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+								class={`px-4 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
 									link.isActive 
-										? 'bg-white/10 text-white shadow-inner' 
+										? 'bg-white text-black shadow-lg' 
 										: 'text-light-gray/60 hover:text-white hover:bg-white/5'
 								}`}
 							>
@@ -82,8 +88,25 @@ const currentPath = Astro.url.pathname;
 			</div>
 		</nav>
 
-		<main class="max-w-4xl mx-auto px-6 py-12 relative z-10">
+		<main class={`${fullWidth ? 'w-full' : 'max-w-6xl mx-auto px-6'} relative z-10`}>
 			<slot />
 		</main>
+
+		<footer class="max-w-6xl mx-auto px-6 py-20 mt-20 border-t border-white/10 relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+			<div class="space-y-2 text-center md:text-left">
+				<p class="font-display font-bold text-white uppercase tracking-widest">Jamal Williams</p>
+				<p class="text-xs text-light-gray/40 uppercase tracking-[0.2em]">Digital Architect & Storyteller</p>
+			</div>
+			
+			<div class="flex gap-8 text-light-gray/40 text-xs uppercase tracking-widest font-bold">
+				<a href="https://linkedin.com/in/jamalwilliams" class="hover:text-gold-1 transition-colors">LinkedIn</a>
+				<a href="https://github.com/JamalWilliams" class="hover:text-gold-1 transition-colors">GitHub</a>
+				<a href="/manifesto" class="hover:text-gold-1 transition-colors underline underline-offset-8 decoration-gold-1/30">Manifesto</a>
+			</div>
+
+			<p class="text-[10px] text-light-gray/30 uppercase tracking-[0.3em]">
+				&copy; {new Date().getFullYear()} • DETROIT • MI
+			</p>
+		</footer>
 	</body>
 </html>

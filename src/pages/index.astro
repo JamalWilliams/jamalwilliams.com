@@ -5,99 +5,197 @@ import { getCollection, getEntry } from 'astro:content';
 const homepage = await getEntry('pages', 'homepage');
 const manifestoEntry = await getEntry('pages', 'manifesto');
 
-const heroHeadline = homepage?.data.headline || "Sovereign";
-const heroSubHeadline = homepage?.data.subHeadline || "by design.";
+const heroHeadline = "SOVEREIGN";
+const heroSubHeadline = "BY DESIGN.";
 const heroDescription = homepage?.data.heroDescription || manifestoEntry?.data.description || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. Now, I'm building the systems that allow creators to own their narrative.";
-const heroImage = homepage?.data.heroImage || "/media/Jamal_Profile.png";
-
-const pages = await getCollection('pages');
-const filteredPages = pages.filter(p => !['homepage', 'manifesto'].includes(p.id));
-const threeDoors = filteredPages.slice(0, 3);
+const heroImage = "/images/hero_graphic_transparent.png";
 
 const practices = await getCollection('practice');
 ---
 
-<Layout title="Jamal Williams | Sovereign Storyteller">
-	<section class="space-y-16 py-20 animate-fade-in">
-		<header class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 pt-8 pb-12">
-			<div class="flex-1 space-y-6">
-				<div class="inline-block px-3 py-1 rounded-full bg-gold-1/10 border border-gold-1/20 text-gold-1 text-sm font-medium animate-slide-up">
-					Jamal 3.0 • Digital Architect
+<Layout title="Jamal Williams | Sovereign Storyteller" fullWidth={true}>
+	<!-- HERO SECTION: Vela Armon / Hotle Inspiration -->
+	<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+		<div class="absolute inset-0 z-0 flex items-center justify-center select-none pointer-events-none">
+			<h1 class="font-architectural text-[22vw] leading-none text-white/[0.03] animate-fade-in">
+				{heroHeadline}
+			</h1>
+		</div>
+
+		<div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+			<div class="lg:col-span-7 space-y-10">
+				<div class="space-y-4">
+					<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-white/10 text-gold-1 text-[10px] uppercase tracking-[0.3em] font-bold animate-slide-up">
+						<span class="relative flex h-2 w-2">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-1 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-gold-1"></span>
+						</span>
+						Jamal 3.0 • Digital Architect
+					</div>
+					<h2 class="font-architectural text-7xl sm:text-9xl text-white leading-[0.85] animate-slide-up" style="animation-delay: 0.1s;">
+						{heroHeadline}<br/>
+						<span class="text-white/20">{heroSubHeadline}</span>
+					</h2>
 				</div>
-				<h1 class="text-5xl sm:text-7xl font-bold tracking-tight text-white leading-tight font-display animate-slide-up" style="animation-delay: 0.1s;">
-					{heroHeadline} <span class="text-light-gray/60">{heroSubHeadline}</span>
-				</h1>
-				<p class="text-xl text-light-gray/80 max-w-xl leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
+
+				<p class="text-xl sm:text-2xl text-light-gray/60 max-w-2xl leading-relaxed font-light animate-slide-up" style="animation-delay: 0.2s;">
 					{heroDescription}
 				</p>
-				<div class="flex gap-4 pt-4 animate-slide-up" style="animation-delay: 0.3s;">
-					<a href="#practice" class="btn-primary">View Practice</a>
-					<a href="/manifesto" class="btn-secondary">Read Manifesto</a>
+
+				<div class="flex flex-wrap gap-6 pt-4 animate-slide-up" style="animation-delay: 0.3s;">
+					<a href="#practice" class="btn-pill group">
+						<span>View Practice</span>
+						<span class="btn-pill-icon group-hover:rotate-45 transition-transform">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor font-bold">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+							</svg>
+						</span>
+					</a>
+					<a href="/manifesto" class="btn-outline group">
+						<span>Read Manifesto</span>
+						<span class="opacity-40 group-hover:opacity-100 transition-opacity">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+							</svg>
+						</span>
+					</a>
 				</div>
 			</div>
-			
-			<div class="flex-1 flex justify-center lg:justify-end animate-slide-up pointer-events-none" style="animation-delay: 0.4s;">
+
+			<div class="lg:col-span-5 relative animate-fade-in" style="animation-delay: 0.5s;">
+				<div class="absolute inset-0 bg-gold-1/10 blur-[120px] rounded-full animate-float"></div>
 				<img 
 					src={heroImage} 
 					alt="Jamal Williams" 
-					class="w-full max-w-md lg:max-w-lg object-contain drop-shadow-[0_20px_50px_rgba(20,33,61,0.5)]" 
+					class="relative z-10 w-full max-w-lg mx-auto drop-shadow-[0_35px_60px_rgba(0,0,0,0.8)] grayscale hover:grayscale-0 transition-all duration-700"
 				/>
 			</div>
-		</header>
+		</div>
+	</section>
 
-		<section id="practice" class="space-y-8 animate-slide-up" style="animation-delay: 0.4s;">
-			<h2 class="text-2xl font-bold text-white border-b border-[#233559] pb-4 font-display">The Practice</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{practices.map((item) => {
-					const isGold2 = item.data.accentColor === 'gold-2';
-					const logoSrc = `/images/logo_${item.id.replace(/-/g, '_')}.png`;
-					return (
-					<a href={`/practice/${item.id}`} class="group p-8 rounded-3xl glass shadow-2xl flex flex-col justify-between">
-						<div>
-							<div class="h-16 flex items-center justify-start mb-6 transition-transform group-hover:scale-105">
-								<img src={logoSrc} alt={item.data.title || item.id} class="h-full w-auto object-contain drop-shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-								<div class={`hidden w-12 h-12 rounded-xl items-center justify-center ${isGold2 ? 'bg-gold-2/10 text-gold-2' : 'bg-gold-1/10 text-gold-1'}`}>
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										{item.data.icon === 'camera' ? (
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-										) : item.data.icon === 'bolt' ? (
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-										) : (
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-										)}
+	<!-- MARQUEE: Woodcraft Inspiration -->
+	<div class="marquee-container bg-white/5 backdrop-blur-sm border-white/5">
+		<div class="marquee-content py-2">
+			{[1, 2, 3, 4].map(() => (
+				<>
+					<span class="font-architectural text-2xl text-white/20">Sovereign Storytelling</span>
+					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
+					<span class="font-architectural text-2xl text-white/20">Agentic Systems</span>
+					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
+					<span class="font-architectural text-2xl text-white/20">Slow Exhale</span>
+					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
+					<span class="font-architectural text-2xl text-white/20">Digital Architecture</span>
+					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
+				</>
+			))}
+		</div>
+	</div>
+
+	<!-- PRACTICE SECTION: Hotle / Projects Style -->
+	<section id="practice" class="container mx-auto px-6 py-32 space-y-24">
+		<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
+			<div class="space-y-4">
+				<h2 class="font-architectural text-6xl text-white uppercase tracking-tighter">The Practice</h2>
+				<p class="text-light-gray/40 uppercase tracking-[0.3em] text-xs font-bold">Strategic Ecosystems & Artistic Storytelling</p>
+			</div>
+			<p class="max-w-xs text-sm text-light-gray/40 leading-relaxed italic">
+				"We don't just build websites; we build ecosystems that prioritize your freedom and integrity."
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+			{practices.map((item, index) => {
+				const isJWI = item.id === 'jwi';
+				const orderNumber = (index + 1).toString().padStart(2, '0');
+				return (
+					<a href={`/practice/${item.id}`} class="group relative block rounded-architectural overflow-hidden glass aspect-[4/5] sm:aspect-[1.1] flex flex-col justify-between p-8 sm:p-12 transition-all duration-700 hover:scale-[0.99] hover:shadow-[0_0_50px_-12px_rgba(252,163,17,0.3)] hover:border-gold-1/40">
+						<!-- Background Blueprint Watermark -->
+						<div class="absolute top-4 right-10 z-0 pointer-events-none select-none">
+							<span class="font-architectural text-[12vw] leading-none text-white/[0.08] group-hover:text-gold-1/10 transition-colors duration-700">
+								{orderNumber}
+							</span>
+						</div>
+
+						<!-- Background Gradient / Texture -->
+						<div class={`absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700 bg-gradient-to-br ${isJWI ? 'from-gold-1/40 to-navy' : 'from-gold-1/20 to-navy'}`}></div>
+						
+						<!-- Empty top spacer (reduced) -->
+						<div class="flex-1"></div>
+
+						<!-- Bottom Section: Content & Logo Integrated -->
+						<div class="relative z-10 space-y-8">
+							<div class="flex items-center justify-between gap-6">
+								<img 
+									src={`/media/logo_${item.id}.png`} 
+									alt={item.data.title} 
+									class="h-12 sm:h-16 w-auto object-contain brightness-0 invert opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out origin-left" 
+								/>
+								<div class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-gold-1 group-hover:text-navy group-hover:border-gold-1 group-hover:shadow-[0_0_20px_rgba(252,163,17,0.4)] transition-all duration-500 flex-shrink-0">
+									<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 									</svg>
 								</div>
 							</div>
-							<h3 class={`text-2xl font-semibold text-white transition-colors font-display ${isGold2 ? 'group-hover:text-gold-2' : 'group-hover:text-gold-1'}`}>{item.data.title || item.id}</h3>
-							{item.data.description && <p class="mt-4 text-light-gray/80 leading-relaxed line-clamp-3">{item.data.description}</p>}
+
+							<div class="space-y-4">
+								<div class="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-gold-1 transition-all duration-700"></div>
+								<h3 class="font-architectural text-5xl sm:text-6xl text-white leading-none uppercase tracking-tighter group-hover:text-gold-1 transition-colors">
+									{item.data.title}
+								</h3>
+								<p class="text-lg text-light-gray/60 max-w-sm leading-relaxed line-clamp-2 font-light">
+									{item.data.description}
+								</p>
+							</div>
 						</div>
-						<span class={`inline-flex items-center mt-6 font-medium ${isGold2 ? 'text-gold-2' : 'text-gold-1'}`}>View Practice <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></span>
 					</a>
-				)})}
-			</div>
-		</section>
+				)
+			})}
+		</div>
+	</section>
 
-		<section id="explore" class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-up" style="animation-delay: 0.5s;">
-			{threeDoors.map((door) => (
-				<a href={`/${door.id}`} class="glass p-6 rounded-2xl group">
-					<h4 class="text-white font-bold font-display group-hover:text-gold-1 transition-colors">
-						{door.data.title || door.id.charAt(0).toUpperCase() + door.id.slice(1)}
-					</h4>
-					<p class="text-xs text-light-gray/60 mt-1">
-						{door.data.description || (door.id === 'about' ? 'The Sovereign Architect Story.' : `Learning the ${door.id}.`)}
+	<!-- MANIFESTO SECTION: Woodcraft High-Contrast Style -->
+	<section class="section-light rounded-architectural mx-4 sm:mx-12 overflow-hidden mb-12">
+		<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+			<div class="lg:col-span-5 space-y-8">
+				<h2 class="font-architectural text-6xl sm:text-8xl leading-[0.85] text-black">
+					THE<br/>MANIFESTO
+				</h2>
+				<div class="h-px w-24 bg-black/10"></div>
+				<p class="text-sm uppercase tracking-[0.4em] font-bold text-black/40">Sovereign by choice.</p>
+			</div>
+
+			<div class="lg:col-span-7 space-y-12">
+				<div class="space-y-8">
+					<p class="text-3xl sm:text-4xl leading-tight font-light text-black">
+						"In a world of noise, <span class="font-bold underline decoration-gold-1 decoration-4">clarity</span> is the ultimate rebellion. We architect systems that allow creators to own their signal."
 					</p>
-				</a>
-			))}
-		</section>
+					<p class="text-xl text-black/60 leading-relaxed font-light">
+						Whether through the lens of a camera or the architecture of a digital system, the goal is the same: to create a sanctuary where the work can breathe, resonate, and endure.
+					</p>
+				</div>
+				
+				<div class="grid grid-cols-2 gap-8 pt-8 border-t border-black/5">
+					<div class="space-y-2">
+						<span class="text-[10px] uppercase tracking-widest font-black text-black/40">Integrity</span>
+						<p class="text-sm font-medium">Built on transparency and respect.</p>
+					</div>
+					<div class="space-y-2">
+						<span class="text-[10px] uppercase tracking-widest font-black text-black/40">Freedom</span>
+						<p class="text-sm font-medium">Escaping the hustle treadmill.</p>
+					</div>
+				</div>
 
-		<footer class="pt-12 border-t border-[#233559] flex flex-col md:flex-row justify-between items-center gap-6">
-			<p class="text-sm text-light-gray/60">
-				&copy; {new Date().getFullYear()} Jamal Williams. Detroit, MI.
-			</p>
-			<div class="flex gap-6 text-light-gray/60 text-sm">
-				<a href="https://linkedin.com/in/jamalwilliams" class="hover:text-white transition-colors">LinkedIn</a>
-				<a href="https://github.com/JamalWilliams" class="hover:text-white transition-colors">GitHub</a>
+				<div class="pt-8">
+					<a href="/manifesto" class="inline-flex items-center gap-4 font-architectural text-xl group hover:text-gold-1 transition-colors">
+						Read the full narrative
+						<span class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:border-gold-1 transition-colors">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+							</svg>
+						</span>
+					</a>
+				</div>
 			</div>
-		</footer>
+		</div>
 	</section>
 </Layout>

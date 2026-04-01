@@ -14,35 +14,45 @@ const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title} | Jamal Williams`}>
-	<section class="space-y-12 py-20 animate-fade-in">
-		<header class="space-y-4">
-			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group">
+	<section class="space-y-12 py-20 animate-fade-in max-w-4xl mx-auto">
+		<header class="space-y-6">
+			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group uppercase tracking-[0.3em] text-[10px] font-bold">
 				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
 				Back Home
 			</a>
-			<h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl font-display animate-slide-up">
+			<h1 class="font-architectural text-6xl sm:text-8xl text-white leading-[0.85] animate-slide-up">
 				{(() => {
 					const safeTitle = entry.data.title || entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
 					const parts = safeTitle.split(' ');
 					return (
 						<>
-							{parts[0]} <span class="text-gradient">{parts.slice(1).join(' ')}</span>
+							{parts[0]} <span class="text-white/20">{parts.slice(1).join(' ')}</span>
 						</>
 					);
 				})()}
 			</h1>
-			<p class="text-2xl text-light-gray/60 font-display animate-slide-up" style="animation-delay: 0.1s;">
+			<p class="text-2xl text-light-gray/60 font-light animate-slide-up leading-relaxed" style="animation-delay: 0.1s;">
 				{entry.data.description}
 			</p>
 		</header>
 
-		<div class="glass p-8 md:p-12 rounded-3xl space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none" style="animation-delay: 0.2s;">
+		<div class="glass p-8 md:p-16 rounded-architectural space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none border-white/5 shadow-2xl relative overflow-hidden" style="animation-delay: 0.2s;">
+			<!-- Dynamic Background Accent -->
+			<div class={`absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10 rounded-full pointer-events-none ${entry.data.accentColor === 'gold-2' ? 'bg-gold-2' : 'bg-gold-1'}`}></div>
+			
 			<Content />
 		</div>
 
 		{entry.data.link && (
-			<div class="flex justify-center pt-8">
-				<a href={entry.data.link} class="btn-primary">Visit {entry.data.title}</a>
+			<div class="flex justify-center pt-12 animate-slide-up" style="animation-delay: 0.3s;">
+				<a href={entry.data.link} class="btn-pill group">
+					<span>Visit {entry.data.title}</span>
+					<span class="btn-pill-icon group-hover:rotate-45 transition-transform">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+						</svg>
+					</span>
+				</a>
 			</div>
 		)}
 	</section>
