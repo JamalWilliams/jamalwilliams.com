@@ -18,18 +18,18 @@ Whether I am refactoring a legacy codebase or directing a soulful portrait sessi
 ### The Generalist’s Superpower
 Sovereignty is the refusal to be a passenger in your own life. It is the transition from being a consumer of systems to being the **Architect** of them. It is the realization that your business, your body, and your brand are not things that "happened" to you—they are structures you build, brick by intentional brick.
 
-The world tells us to specialize—to pick a lane and stay there until we disappear. I choose a different path. I choose the wide, deep, and integrated life of the **Sovereign Architect**.
+The world tells me to specialize—to pick a lane and stay there until I disappear. I choose a different path. I choose the wide, deep, and integrated life of the **Sovereign Architect**.
 
 ### The Three Pillars of Sovereignty
-My work is dedicated to those who are ready to stop drifting and start designing.
+My work is built on three essential pillars. These are the architectures I design, the principles I live by, and the foundation of everything I create.
 
-1.  **Digital Sovereignty:** We stop letting "the algorithm" or "the platform" dictate our reach. We build owned systems—automated, authentic, and independent—that allow our work to breathe and our businesses to scale without burning us out.
-2.  **Creative Sovereignty:** We stop performing for the gaze of others. We reclaim our stories. Whether through the "Soulful Witness" of photography or the intentionality of a brand narrative, we stand in our truth without apology.
-3.  **Financial Sovereignty:** We build assets that buy back our time. We create a foundation of freedom that allows us to explore our interests and bring joy to our community.
+1.  **Digital Sovereignty:** This is the refusal to let "the algorithm" or "the platform" dictate reach. I build owned systems—automated, authentic, and independent—that allow work to breathe and businesses to scale without burnout. 
+2.  **Creative Sovereignty:** This is the reclamation of the story. Whether through the "Soulful Witness" of photography or the intentionality of a brand narrative, I prioritize the technical and artistic foundation that allows truth to stand without apology.
+3.  **Financial Sovereignty:** This is the creation of assets that buy back time. I build a foundation of freedom that allows for the exploration of interests and the bringing of joy to the community.
 
 ### The Invitation
 I don't want to be the best at one thing. I want to be the architect of a life that is wide, deep, and entirely my own.
 
-If you are an entrepreneur seeking a digital foundation that actually works, a soul seeking to be seen in your most sovereign form, or a visionary looking to build a legacy...
+I am building a legacy for those who are ready to stop drifting and start designing.
 
-**Let's build something sovereign. By design.**
+**Build something sovereign. By design.**

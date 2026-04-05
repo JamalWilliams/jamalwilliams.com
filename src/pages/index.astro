@@ -5,10 +5,12 @@ import { getCollection, getEntry } from 'astro:content';
 const homepage = await getEntry('pages', 'homepage');
 const manifestoEntry = await getEntry('pages', 'manifesto');
 
-const heroHeadline = "SOVEREIGN";
-const heroSubHeadline = "BY DESIGN.";
-const heroDescription = homepage?.data.heroDescription || manifestoEntry?.data.description || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. Now, I'm building the systems that allow creators to own their narrative.";
-const heroImage = "/images/hero_graphic_transparent.png";
+const heroHeadline = homepage?.data.headline || "SOVEREIGN";
+const heroSubHeadline = homepage?.data.subHeadline || "BY DESIGN.";
+const heroDescription = homepage?.data.heroDescription || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. Now, I am building the systems that allow for the absolute ownership of the narrative.";
+const heroImage = homepage?.data.heroImage || "/images/hero_graphic_transparent.png";
+const practiceQuote = homepage?.data.practiceQuote || "Digital architecture is more than just code; it is the construction of ecosystems that prioritize freedom and integrity.";
+const manifestoQuote = homepage?.data.manifestoQuote || "In a world of noise, clarity is the ultimate rebellion. I architect systems that allow the signal to be heard.";
 
 const practices = await getCollection('practice');
 ---
@@ -99,7 +101,7 @@ const practices = await getCollection('practice');
 				<p class="text-light-gray/40 uppercase tracking-[0.3em] text-xs font-bold">Strategic Ecosystems & Artistic Storytelling</p>
 			</div>
 			<p class="max-w-xs text-sm text-light-gray/40 leading-relaxed italic">
-				"We don't just build websites; we build ecosystems that prioritize your freedom and integrity."
+				"{practiceQuote}"
 			</p>
 		</div>
 
@@ -167,7 +169,7 @@ const practices = await getCollection('practice');
 			<div class="lg:col-span-7 space-y-12">
 				<div class="space-y-8">
 					<p class="text-3xl sm:text-4xl leading-tight font-light text-black">
-						"In a world of noise, <span class="font-bold underline decoration-gold-1 decoration-4">clarity</span> is the ultimate rebellion. We architect systems that allow creators to own their signal."
+						"{manifestoQuote}"
 					</p>
 					<p class="text-xl text-black/60 leading-relaxed font-light">
 						Whether through the lens of a camera or the architecture of a digital system, the goal is the same: to create a sanctuary where the work can breathe, resonate, and endure.

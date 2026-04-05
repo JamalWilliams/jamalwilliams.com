@@ -31,6 +31,14 @@ Transition the current "Tech/Developer" UI into a high-end "Architectural/Editor
     - Pure white/light-gray background with deep black typography.
     - Add an "Editorial" layout with plenty of whitespace.
 
-## Phase 5: Interaction & Polish
-- [ ] **Add Scrolling Marquee**: For "Agentic Systems" or "Slow Exhale" keywords.
-- [ ] **Micro-interactions**: Subtle hover states on cards and links.
+## Phase 5: Interaction & Infrastructure
+- [x] **Automated Deployment**: Set up GitHub Actions + Cloudflare Pages.
+- [x] **Content Bundling**: Integrated Obsidian Vault content into the repo for CI.
+- [ ] **DNS Migration**: Point `jamalwilliams.com` to `jamalwilliams-v3.pages.dev`.
+- [ ] **Micro-interactions**: Refine marquee and card entry animations.
+
+## Phase 6: Expert-Led Content Refactoring
+- [x] **Voice Protocol Upgrade**: Shifted from "we/us" to "I/me" for the personal brand.
+- [x] **Positioning Shift**: Transitioned from service-led ("I help you") to expert-led ("I build", "I practice").
+- [x] **Content Decoupling**: Refactored `index.astro` to remove hardcoded strings. All hero/section text is now managed in `homepage.md` within the vault.
+- [x] **Mandate Integration**: Formalized the "Personal Brand Voice" mandate in `GEMINI.md`.

@@ -46,6 +46,8 @@ const pages = defineCollection({
     subHeadline: z.string().optional(),
     heroDescription: z.string().optional(),
     heroImage: z.string().optional(),
+    practiceQuote: z.string().optional(),
+    manifestoQuote: z.string().optional(),
     order: z.number().optional(),
     menu: z.array(z.string()).optional(),
   }),
