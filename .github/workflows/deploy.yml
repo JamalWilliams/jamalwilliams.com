@@ -31,6 +31,8 @@ jobs:
         # We copy the bundled media into public/media so Vite finds them
         # And pass a relative path for the Vault in CI so it uses the in-repo version
         run: |
+          mkdir -p src/assets
+          ln -s ../../Vault/Websites/jamalwilliams.com/media src/assets/vault-media
           mkdir -p public/media
           cp -R Vault/Websites/jamalwilliams.com/media/* public/media/
           npm run build

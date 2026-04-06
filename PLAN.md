@@ -34,11 +34,19 @@ Transition the current "Tech/Developer" UI into a high-end "Architectural/Editor
 ## Phase 5: Interaction & Infrastructure
 - [x] **Automated Deployment**: Set up GitHub Actions + Cloudflare Pages.
 - [x] **Content Bundling**: Integrated Obsidian Vault content into the repo for CI.
-- [ ] **DNS Migration**: Point `jamalwilliams.com` to `jamalwilliams-v3.pages.dev`.
+- [ ] **DNS Migration**: Point `jamalwilliams.com` to `jamalwilliams-v3.pages.dev`. (Status: Initializing/Pending - WHOIS confirmed, waiting for Cloudflare activation)
 - [ ] **Micro-interactions**: Refine marquee and card entry animations.
+- [ ] **Google Workspace Verification**: Finalize TXT record verification. (Status: Record set, pending propagation)
+- [ ] **MX/SPF Configuration**: Apply once Cloudflare zone is active.
 
 ## Phase 6: Expert-Led Content Refactoring
 - [x] **Voice Protocol Upgrade**: Shifted from "we/us" to "I/me" for the personal brand.
 - [x] **Positioning Shift**: Transitioned from service-led ("I help you") to expert-led ("I build", "I practice").
 - [x] **Content Decoupling**: Refactored `index.astro` to remove hardcoded strings. All hero/section text is now managed in `homepage.md` within the vault.
 - [x] **Mandate Integration**: Formalized the "Personal Brand Voice" mandate in `GEMINI.md`.
+
+## ⏭️ Next Steps
+- [ ] 🟢 **Monitor Cloudflare Activation**: Site currently in `initializing` state for nameservers. **Do not delete HostGator yet; it is not the bottleneck.**
+- [ ] 🟢 **Finalize Google Workspace Verification**: Verification TXT record is confirmed in DNS.
+- [ ] 🟢 **Update MX/SPF Records**: Apply after the zone is `active` in Cloudflare.
+- [ ] ⚪ **Micro-interactions**: Refine marquee speed and add staggered entry animations.
