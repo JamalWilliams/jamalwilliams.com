@@ -19,7 +19,11 @@ const getVaultPath = () => {
   const repoRelative = path.resolve('./Vault/Websites/jamalwilliams.com');
   if (fs.existsSync(repoRelative)) return repoRelative;
 
-  // 3. Fallback to a safe default within the src folder
+  // 3. Check for global Vault (Local Dev)
+  const globalVault = '/Users/jamalwilliams/Vault/Websites/jamalwilliams.com';
+  if (fs.existsSync(globalVault)) return globalVault;
+
+  // 4. Fallback to a safe default within the src folder
   return './src/content';
 };
 
