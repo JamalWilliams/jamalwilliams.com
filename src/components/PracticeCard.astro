@@ -1,0 +1,49 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  index: number;
+}
+
+const { id, title, description, index } = Astro.props;
+const isJWI = id === 'jwi';
+const orderNumber = (index + 1).toString().padStart(2, '0');
+---
+
+<a href={`/practice/${id}`} class="group relative block rounded-architectural overflow-hidden glass aspect-[4/5] sm:aspect-[1.1] flex flex-col justify-between p-8 sm:p-16 transition-all duration-700 hover:scale-[0.99] hover:shadow-[0_0_80px_-20px_rgba(252,163,17,0.3)] hover:border-gold/50">
+  <!-- Top Meta Section -->
+  <div class="relative z-10 flex justify-between items-start">
+    <div class="space-y-1">
+      <p class="font-mono text-[10px] text-gold uppercase tracking-[0.4em] opacity-100">Practice Node</p>
+      <p class="font-mono text-[9px] text-white/20 uppercase tracking-widest">{id.toUpperCase()} — ACTIVE</p>
+    </div>
+    <span class="font-architectural text-[10vw] leading-none text-white/[0.05] group-hover:text-gold/10 transition-colors duration-700 select-none">
+      {orderNumber}
+    </span>
+  </div>
+
+  <!-- Background Gradient -->
+  <div class={`absolute inset-0 opacity-5 group-hover:opacity-20 transition-opacity duration-700 bg-gradient-to-br ${isJWI ? 'from-gold to-navy' : 'from-glow to-navy'}`}></div>
+  
+  <!-- Content Section -->
+  <div class="relative z-10 space-y-10">
+    <div class="flex items-end justify-between gap-6">
+      <div class="space-y-6 flex-1">
+        <div class="h-[2px] w-12 bg-white/20 group-hover:w-32 group-hover:bg-gold transition-all duration-700"></div>
+        <h3 class="font-architectural text-5xl sm:text-7xl text-white leading-none group-hover:text-gold transition-colors m-0">
+          {title}
+        </h3>
+        <p class="text-xl text-white/40 max-w-md leading-snug line-clamp-2 font-light group-hover:text-white/60 transition-colors">
+          {description}
+        </p>
+      </div>
+      
+      <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-gold group-hover:text-navy group-hover:border-gold group-hover:shadow-[0_0_30px_rgba(252,163,17,0.5)] transition-all duration-700 flex-shrink-0 -rotate-45 group-hover:rotate-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</a>

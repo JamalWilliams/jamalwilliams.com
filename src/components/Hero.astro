@@ -1,0 +1,84 @@
+---
+interface Props {
+  headline: string;
+  subHeadline?: string;
+  description: string;
+  image: string;
+  badge?: string;
+  primaryCTA?: { text: string; href: string };
+  secondaryCTA?: { text: string; href: string };
+}
+
+const { 
+  headline, 
+  subHeadline, 
+  description, 
+  image, 
+  badge = "Sovereign Architect • v1.5.0",
+  primaryCTA = { text: "View Practice", href: "#practice" },
+  secondaryCTA = { text: "Read Manifesto", href: "/manifesto" }
+} = Astro.props;
+---
+
+<section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20">
+  <!-- Background Watermark -->
+  <div class="absolute inset-0 z-0 flex items-center justify-center select-none pointer-events-none">
+    <h1 class="font-architectural text-[24vw] leading-none text-white/[0.02] animate-fade-in">
+      {headline}
+    </h1>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-8 space-y-12">
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full glass border-white/10 text-gold text-[10px] uppercase tracking-[0.4em] font-bold animate-slide-up">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+          </span>
+          {badge}
+        </div>
+        <h1 class="font-architectural text-7xl sm:text-[10rem] text-white leading-[0.85] animate-slide-up m-0" style="animation-delay: 0.1s;">
+          {headline}<br/>
+          {subHeadline && <span class="text-white/10">{subHeadline}</span>}
+        </h1>
+      </div>
+
+      <p class="text-xl sm:text-3xl text-white/60 max-w-3xl leading-snug font-light animate-slide-up" style="animation-delay: 0.2s;">
+        {description}
+      </p>
+
+      <div class="flex flex-wrap gap-8 pt-6 animate-slide-up" style="animation-delay: 0.3s;">
+        {primaryCTA && (
+          <a href={primaryCTA.href} class="btn-pill group scale-110 origin-left">
+            <span>{primaryCTA.text}</span>
+            <span class="btn-pill-icon group-hover:rotate-45 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        )}
+        {secondaryCTA && (
+          <a href={secondaryCTA.href} class="btn-outline group">
+            <span>{secondaryCTA.text}</span>
+            <span class="opacity-40 group-hover:opacity-100 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </span>
+          </a>
+        )}
+      </div>
+    </div>
+
+    <div class="lg:col-span-4 relative animate-fade-in hidden lg:block" style="animation-delay: 0.5s;">
+      <div class="absolute inset-0 bg-gold/5 blur-[150px] rounded-full animate-float"></div>
+      <img 
+        src={image} 
+        alt={headline} 
+        class="relative z-10 w-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)] grayscale hover:grayscale-0 transition-all duration-1000 rotate-2 hover:rotate-0"
+      />
+    </div>
+  </div>
+</section>

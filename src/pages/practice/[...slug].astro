@@ -14,39 +14,42 @@ const { Content } = await render(entry);
 ---
 
 <Layout title={`${entry.data.title} | Jamal Williams`}>
-	<section class="space-y-12 py-20 animate-fade-in max-w-4xl mx-auto">
-		<header class="space-y-6">
-			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group uppercase tracking-[0.3em] text-[10px] font-bold">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-				Back Home
+	<section class="py-32 animate-fade-in max-w-5xl mx-auto">
+		<header class="mb-24">
+			<a href="/" class="font-mono text-[10px] text-gold hover:text-white transition-colors flex items-center gap-2 mb-12 group uppercase tracking-widest">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" /></svg>
+				Return to Core
 			</a>
-			<h1 class="font-architectural text-6xl sm:text-8xl text-white leading-[0.85] animate-slide-up">
+			
+			<h1 class="font-architectural text-7xl md:text-[10rem] text-white leading-[0.85] m-0">
 				{(() => {
 					const safeTitle = entry.data.title || entry.id.charAt(0).toUpperCase() + entry.id.slice(1);
 					const parts = safeTitle.split(' ');
 					return (
 						<>
-							{parts[0]} <span class="text-white/20">{parts.slice(1).join(' ')}</span>
+							{parts[0]} <br /><span class="text-white/10">{parts.slice(1).join(' ')}</span>
 						</>
 					);
 				})()}
 			</h1>
-			<p class="text-2xl text-light-gray/60 font-light animate-slide-up leading-relaxed" style="animation-delay: 0.1s;">
+			<p class="text-2xl text-white/40 font-light mt-8 max-w-2xl leading-snug">
 				{entry.data.description}
 			</p>
 		</header>
 
-		<div class="glass p-8 md:p-16 rounded-architectural space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none border-white/5 shadow-2xl relative overflow-hidden" style="animation-delay: 0.2s;">
+		<div class="glass p-12 md:p-20 rounded-[3rem] animate-slide-up relative overflow-hidden" style="animation-delay: 0.1s;">
 			<!-- Dynamic Background Accent -->
-			<div class={`absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10 rounded-full pointer-events-none ${entry.data.accentColor === 'gold-2' ? 'bg-gold-2' : 'bg-gold-1'}`}></div>
+			<div class="absolute top-0 right-0 w-96 h-96 blur-[150px] opacity-10 rounded-full pointer-events-none bg-gold/20"></div>
 			
-			<Content />
+			<div class="prose max-w-none">
+				<Content />
+			</div>
 		</div>
 
 		{entry.data.link && (
-			<div class="flex justify-center pt-12 animate-slide-up" style="animation-delay: 0.3s;">
-				<a href={entry.data.link} class="btn-pill group">
-					<span>Visit {entry.data.title}</span>
+			<div class="flex justify-center pt-20 animate-slide-up" style="animation-delay: 0.3s;">
+				<a href={entry.data.link} class="btn-pill group scale-110">
+					<span>Explore {entry.data.title}</span>
 					<span class="btn-pill-icon group-hover:rotate-45 transition-transform">
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -55,30 +58,10 @@ const { Content } = await render(entry);
 				</a>
 			</div>
 		)}
+
+		<footer class="mt-32 pt-12 border-t border-white/10 flex justify-between items-center">
+			<p class="font-mono text-[10px] opacity-40 uppercase tracking-widest">v3.5 — PRACTICE_NODE</p>
+			<a href="/" class="btn-outline">Exit Practice</a>
+		</footer>
 	</section>
 </Layout>
-
-<style is:global>
-	@reference "../../styles/global.css";
-	.prose h1, .prose h2, .prose h3 {
-		@apply font-display text-white font-bold;
-	}
-	.prose h3 {
-		@apply text-gold-1 mt-12 mb-4;
-	}
-	.prose p {
-		@apply mb-6;
-	}
-	.prose strong {
-		@apply text-white font-bold;
-	}
-	.prose blockquote {
-		@apply border-l-4 border-gold-1 pl-6 py-2 italic text-white text-xl my-8;
-	}
-    .prose ul {
-        @apply space-y-4 my-8;
-    }
-    .prose li {
-        @apply list-disc list-inside;
-    }
-</style>

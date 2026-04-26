@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('pages', '404');
+
+const title = entry?.data?.title || "Signal Lost";
+const description = entry?.data?.description || "The coordinate you provided is empty. System parity check failed.";
+
+// Fallback values if Vault content isn't loaded
+const headline = "404";
+const subHeadline = "SIGNAL LOST.";
+const heroDescription = description;
+---
+
+<Layout title={title} fullWidth={true}>
+    <Hero 
+        headline={headline}
+        subHeadline={subHeadline}
+        description={heroDescription}
+        image="/images/hero_graphic_transparent.png"
+    />
+</Layout>

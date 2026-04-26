@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="marquee-container bg-white/5 backdrop-blur-3xl border-y border-white/5 relative z-20">
+  <div class="marquee-content py-4">
+    {[1, 2, 3, 4].map(() => (
+      <>
+        {items.map((item) => (
+          <>
+            <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.5em] font-bold">{item}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-gold/20"></span>
+          </>
+        ))}
+      </>
+    ))}
+  </div>
+</div>
+
+<style>
+  @reference "../styles/global.css";
+  .marquee-container {
+    @apply overflow-hidden whitespace-nowrap w-full flex;
+  }
+  .marquee-content {
+    @apply flex items-center gap-12 animate-marquee;
+  }
+</style>

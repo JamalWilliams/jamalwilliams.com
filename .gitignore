@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 .env.infrastructure
 src/assets/vault-media
+
+*storybook.log
+storybook-static

@@ -1,203 +1,57 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import PracticeCard from '../components/PracticeCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ManifestoSection from '../components/ManifestoSection.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const homepage = await getEntry('pages', 'homepage');
-const manifestoEntry = await getEntry('pages', 'manifesto');
 
 const heroHeadline = homepage?.data.headline || "SOVEREIGN";
 const heroSubHeadline = homepage?.data.subHeadline || "BY DESIGN.";
-const heroDescription = homepage?.data.heroDescription || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. Now, I am building the systems that allow for the absolute ownership of the narrative.";
+const heroDescription = homepage?.data.heroDescription || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. I architect the digital and creative systems that empower radical autonomy.";
 const heroImage = homepage?.data.heroImage || "/images/hero_graphic_transparent.png";
 const practiceQuote = homepage?.data.practiceQuote || "Digital architecture is more than just code; it is the construction of ecosystems that prioritize freedom and integrity.";
 const manifestoQuote = homepage?.data.manifestoQuote || "In a world of noise, clarity is the ultimate rebellion. I architect systems that allow the signal to be heard.";
 
 const practices = await getCollection('practice');
+const marqueeItems = ["Sovereign Storytelling", "Agentic Systems", "Radical Rest", "Digital Architecture", "Detroit Grit"];
 ---
 
-<Layout title="Jamal Williams | Sovereign Storyteller" fullWidth={true}>
-	<!-- HERO SECTION: Vela Armon / Hotle Inspiration -->
-	<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-		<div class="absolute inset-0 z-0 flex items-center justify-center select-none pointer-events-none">
-			<h1 class="font-architectural text-[22vw] leading-none text-white/[0.03] animate-fade-in">
-				{heroHeadline}
-			</h1>
-		</div>
+<Layout title="Jamal Williams | Sovereign Architect" fullWidth={true}>
+	<Hero 
+		headline={heroHeadline}
+		subHeadline={heroSubHeadline}
+		description={heroDescription}
+		image={heroImage}
+	/>
 
-		<div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-			<div class="lg:col-span-7 space-y-10">
-				<div class="space-y-4">
-					<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-white/10 text-gold-1 text-[10px] uppercase tracking-[0.3em] font-bold animate-slide-up">
-						<span class="relative flex h-2 w-2">
-							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-1 opacity-75"></span>
-							<span class="relative inline-flex rounded-full h-2 w-2 bg-gold-1"></span>
-						</span>
-						Jamal 3.0 • Digital Architect
-					</div>
-					<h2 class="font-architectural text-7xl sm:text-9xl text-white leading-[0.85] animate-slide-up" style="animation-delay: 0.1s;">
-						{heroHeadline}<br/>
-						<span class="text-white/20">{heroSubHeadline}</span>
-					</h2>
-				</div>
+	<Marquee items={marqueeItems} />
 
-				<p class="text-xl sm:text-2xl text-light-gray/60 max-w-2xl leading-relaxed font-light animate-slide-up" style="animation-delay: 0.2s;">
-					{heroDescription}
-				</p>
+	<!-- PRACTICE SECTION -->
+	<section id="practice" class="container mx-auto px-6 py-48 space-y-24">
+		<SectionHeader 
+			title="The Practice"
+			subtitle="Strategic Ecosystems & Artistic Storytelling"
+			quote={practiceQuote}
+		/>
 
-				<div class="flex flex-wrap gap-6 pt-4 animate-slide-up" style="animation-delay: 0.3s;">
-					<a href="#practice" class="btn-pill group">
-						<span>View Practice</span>
-						<span class="btn-pill-icon group-hover:rotate-45 transition-transform">
-							<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor font-bold">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-							</svg>
-						</span>
-					</a>
-					<a href="/manifesto" class="btn-outline group">
-						<span>Read Manifesto</span>
-						<span class="opacity-40 group-hover:opacity-100 transition-opacity">
-							<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-							</svg>
-						</span>
-					</a>
-				</div>
-			</div>
-
-			<div class="lg:col-span-5 relative animate-fade-in" style="animation-delay: 0.5s;">
-				<div class="absolute inset-0 bg-gold-1/10 blur-[120px] rounded-full animate-float"></div>
-				<img 
-					src={heroImage} 
-					alt="Jamal Williams" 
-					class="relative z-10 w-full max-w-lg mx-auto drop-shadow-[0_35px_60px_rgba(0,0,0,0.8)] grayscale hover:grayscale-0 transition-all duration-700"
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+			{practices.map((item, index) => (
+				<PracticeCard 
+					id={item.id}
+					title={item.data.title || ""}
+					description={item.data.description || ""}
+					index={index}
 				/>
-			</div>
-		</div>
-	</section>
-
-	<!-- MARQUEE: Woodcraft Inspiration -->
-	<div class="marquee-container bg-white/5 backdrop-blur-sm border-white/5">
-		<div class="marquee-content py-2">
-			{[1, 2, 3, 4].map(() => (
-				<>
-					<span class="font-architectural text-2xl text-white/20">Sovereign Storytelling</span>
-					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
-					<span class="font-architectural text-2xl text-white/20">Agentic Systems</span>
-					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
-					<span class="font-architectural text-2xl text-white/20">Slow Exhale</span>
-					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
-					<span class="font-architectural text-2xl text-white/20">Digital Architecture</span>
-					<span class="w-2 h-2 rounded-full bg-gold-1/40"></span>
-				</>
 			))}
 		</div>
-	</div>
-
-	<!-- PRACTICE SECTION: Hotle / Projects Style -->
-	<section id="practice" class="container mx-auto px-6 py-32 space-y-24">
-		<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
-			<div class="space-y-4">
-				<h2 class="font-architectural text-6xl text-white uppercase tracking-tighter">The Practice</h2>
-				<p class="text-light-gray/40 uppercase tracking-[0.3em] text-xs font-bold">Strategic Ecosystems & Artistic Storytelling</p>
-			</div>
-			<p class="max-w-xs text-sm text-light-gray/40 leading-relaxed italic">
-				"{practiceQuote}"
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-			{practices.map((item, index) => {
-				const isJWI = item.id === 'jwi';
-				const orderNumber = (index + 1).toString().padStart(2, '0');
-				return (
-					<a href={`/practice/${item.id}`} class="group relative block rounded-architectural overflow-hidden glass aspect-[4/5] sm:aspect-[1.1] flex flex-col justify-between p-8 sm:p-12 transition-all duration-700 hover:scale-[0.99] hover:shadow-[0_0_50px_-12px_rgba(252,163,17,0.3)] hover:border-gold-1/40">
-						<!-- Background Blueprint Watermark -->
-						<div class="absolute top-4 right-10 z-0 pointer-events-none select-none">
-							<span class="font-architectural text-[12vw] leading-none text-white/[0.08] group-hover:text-gold-1/10 transition-colors duration-700">
-								{orderNumber}
-							</span>
-						</div>
-
-						<!-- Background Gradient / Texture -->
-						<div class={`absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700 bg-gradient-to-br ${isJWI ? 'from-gold-1/40 to-navy' : 'from-gold-1/20 to-navy'}`}></div>
-						
-						<!-- Empty top spacer (reduced) -->
-						<div class="flex-1"></div>
-
-						<!-- Bottom Section: Content & Logo Integrated -->
-						<div class="relative z-10 space-y-8">
-							<div class="flex items-center justify-between gap-6">
-								<img 
-									src={`/media/logo_${item.id}.png`} 
-									alt={item.data.title} 
-									class="h-12 sm:h-16 w-auto object-contain brightness-0 invert opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out origin-left" 
-								/>
-								<div class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-gold-1 group-hover:text-navy group-hover:border-gold-1 group-hover:shadow-[0_0_20px_rgba(252,163,17,0.4)] transition-all duration-500 flex-shrink-0">
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-									</svg>
-								</div>
-							</div>
-
-							<div class="space-y-4">
-								<div class="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-gold-1 transition-all duration-700"></div>
-								<h3 class="font-architectural text-5xl sm:text-6xl text-white leading-none uppercase tracking-tighter group-hover:text-gold-1 transition-colors">
-									{item.data.title}
-								</h3>
-								<p class="text-lg text-light-gray/60 max-w-sm leading-relaxed line-clamp-2 font-light">
-									{item.data.description}
-								</p>
-							</div>
-						</div>
-					</a>
-				)
-			})}
-		</div>
 	</section>
 
-	<!-- MANIFESTO SECTION: Woodcraft High-Contrast Style -->
-	<section class="section-light rounded-architectural mx-4 sm:mx-12 overflow-hidden mb-12">
-		<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
-			<div class="lg:col-span-5 space-y-8">
-				<h2 class="font-architectural text-6xl sm:text-8xl leading-[0.85] text-black">
-					THE<br/>MANIFESTO
-				</h2>
-				<div class="h-px w-24 bg-black/10"></div>
-				<p class="text-sm uppercase tracking-[0.4em] font-bold text-black/40">Sovereign by choice.</p>
-			</div>
-
-			<div class="lg:col-span-7 space-y-12">
-				<div class="space-y-8">
-					<p class="text-3xl sm:text-4xl leading-tight font-light text-black">
-						"{manifestoQuote}"
-					</p>
-					<p class="text-xl text-black/60 leading-relaxed font-light">
-						Whether through the lens of a camera or the architecture of a digital system, the goal is the same: to create a sanctuary where the work can breathe, resonate, and endure.
-					</p>
-				</div>
-				
-				<div class="grid grid-cols-2 gap-8 pt-8 border-t border-black/5">
-					<div class="space-y-2">
-						<span class="text-[10px] uppercase tracking-widest font-black text-black/40">Integrity</span>
-						<p class="text-sm font-medium">Built on transparency and respect.</p>
-					</div>
-					<div class="space-y-2">
-						<span class="text-[10px] uppercase tracking-widest font-black text-black/40">Freedom</span>
-						<p class="text-sm font-medium">Escaping the hustle treadmill.</p>
-					</div>
-				</div>
-
-				<div class="pt-8">
-					<a href="/manifesto" class="inline-flex items-center gap-4 font-architectural text-xl group hover:text-gold-1 transition-colors">
-						Read the full narrative
-						<span class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:border-gold-1 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-							</svg>
-						</span>
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<ManifestoSection 
+		quote={manifestoQuote}
+		description="Whether through the lens of a camera or the architecture of a digital system, the goal is the same: to create a sanctuary where the work can breathe, resonate, and endure. No corporate fluff. Just the raw architecture of sovereignty."
+	/>
 </Layout>

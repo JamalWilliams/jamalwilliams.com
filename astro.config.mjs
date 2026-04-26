@@ -5,6 +5,7 @@ import 'dotenv/config';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://jamalwilliams.com',
   vite: {
     plugins: [tailwindcss()],
     server: {

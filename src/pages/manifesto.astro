@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import { getEntry, render } from 'astro:content';
 
 const manifesto = await getEntry('pages', 'manifesto');
@@ -11,48 +12,30 @@ const { Content } = await render(manifesto);
 ---
 
 <Layout title={`${manifesto.data.title} | Jamal Williams`}>
-	<section class="space-y-12 py-20 animate-fade-in">
-		<header class="space-y-4">
-			<a href="/" class="text-light-gray/40 hover:text-white transition-colors flex items-center gap-2 mb-8 group">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-				Back Home
+	<section class="py-32 animate-fade-in max-w-5xl mx-auto">
+		<header class="mb-24">
+			<a href="/" class="font-mono text-[10px] text-gold hover:text-white transition-colors flex items-center gap-2 mb-12 group uppercase tracking-widest">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" /></svg>
+				Return to Core
 			</a>
-			<h1 class="text-5xl font-bold tracking-tight text-white sm:text-7xl font-display animate-slide-up">
-				The Generalist <span class="text-gradient">Manifesto</span>
+			
+			<h1 class="font-architectural text-7xl md:text-[10rem] text-white leading-[0.85] m-0">
+				THE<br/>MANIFESTO
 			</h1>
+			<p class="text-2xl text-white/40 font-light mt-8 max-w-2xl">
+				In a world of noise, clarity is the ultimate rebellion. I architect systems that allow the signal to be heard.
+			</p>
 		</header>
 
-		<div class="glass p-8 md:p-12 rounded-3xl space-y-8 text-light-gray/80 leading-relaxed text-lg animate-slide-up prose prose-invert max-w-none" style="animation-delay: 0.1s;">
-			<Content />
+		<div class="glass p-12 md:p-20 rounded-[3rem] animate-slide-up" style="animation-delay: 0.1s;">
+			<div class="prose max-w-none">
+				<Content />
+			</div>
 		</div>
 
-		<footer class="pt-12 flex justify-between">
-			<a href="/principles" class="btn-primary">View Principles</a>
+		<footer class="mt-20 pt-12 border-t border-white/10 flex justify-between items-center">
+			<p class="font-mono text-[10px] opacity-40 uppercase tracking-widest">v3.0 — SOVEREIGN_STORYTELLER</p>
+			<a href="/" class="btn-outline">Exit Narrative</a>
 		</footer>
 	</section>
 </Layout>
-
-<style is:global>
-	@reference "../styles/global.css";
-	.prose h1, .prose h2, .prose h3 {
-		@apply font-display text-white font-bold;
-	}
-	.prose h3 {
-		@apply text-gold-1 mt-12 mb-4;
-	}
-	.prose p {
-		@apply mb-6;
-	}
-	.prose strong {
-		@apply text-white font-bold;
-	}
-	.prose blockquote {
-		@apply border-l-4 border-gold-1 pl-6 py-2 italic text-white text-xl my-8;
-	}
-    .prose ul {
-        @apply space-y-4 my-8;
-    }
-    .prose li {
-        @apply list-disc list-inside;
-    }
-</style>

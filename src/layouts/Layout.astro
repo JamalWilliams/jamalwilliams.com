@@ -1,13 +1,16 @@
 ---
+import { SEO } from 'astro-seo';
 import '../styles/global.css';
 import { getCollection, getEntry } from 'astro:content';
+import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 	fullWidth?: boolean;
 }
 
-const { title, fullWidth = false } = Astro.props;
+const { title, description = "Sovereign Architect & Storyteller.", fullWidth = false } = Astro.props;
 
 // Fetch navigation settings from homepage
 const homepage = await getEntry('pages', 'homepage');
@@ -34,13 +37,14 @@ const navLinks = menuOrder.map(id => {
 }).filter(Boolean);
 
 const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Sovereign Storyteller, Photographer, and Digital Architect." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -48,41 +52,68 @@ const currentPath = Astro.url.pathname;
 		<link rel="manifest" href="/site.webmanifest">
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		{gaId && <GoogleAnalytics measurementId={gaId} />}
+		<SEO
+			title={title}
+			titleTemplate="%s | Jamal Williams"
+			description={description}
+			canonical={canonicalURL}
+			openGraph={{
+				basic: {
+					title: `${title} | Jamal Williams`,
+					type: "website",
+					image: "/media/Jamal_Profile.png",
+					url: canonicalURL.toString(),
+				},
+				optional: {
+					siteName: "Jamal Williams",
+					description: description,
+				}
+			}}
+			twitter={{
+				card: "summary_large_image",
+				title: `${title} | Jamal Williams`,
+				description: description,
+				image: "/media/Jamal_Profile.png",
+			}}
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
-		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-navy text-light-gray font-sans selection:bg-gold-1/30 relative min-h-screen overflow-x-hidden pt-24 sm:pt-32">
+	<body class="bg-navy text-gray font-sans selection:bg-gold/30 relative min-h-screen overflow-x-hidden pt-24 sm:pt-32">
+		<!-- Subtle Grain Overly -->
+		<div class="fixed inset-0 z-50 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]"></div>
+
 		<!-- Background Branding Mark (Architectural Watermark) -->
-		<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none flex items-center justify-center opacity-[0.04]">
-			<span class="font-architectural text-[25vw] leading-none whitespace-nowrap text-white">SOVEREIGN</span>
+		<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none flex items-center justify-center opacity-[0.03]">
+			<span class="font-architectural text-[28vw] leading-none whitespace-nowrap text-white">SOVEREIGN</span>
 		</div>
 
 		<!-- Decorative background glows -->
 		<div class="fixed inset-0 z-0 pointer-events-none selection:bg-transparent">
-			<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold-1/5 blur-[120px] mix-blend-screen opacity-60 animate-float"></div>
-			<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-light-gray/5 blur-[100px] mix-blend-screen opacity-60 animate-float" style="animation-delay: -3s;"></div>
+			<div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/5 blur-[150px] mix-blend-screen opacity-50 animate-float"></div>
+			<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-white/5 blur-[120px] mix-blend-screen opacity-40 animate-float" style="animation-delay: -3s;"></div>
 		</div>
 
 		<!-- Refined Sticky Navigation -->
-		<nav id="main-nav" class="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-auto min-w-[110px] sm:min-w-0 px-1 py-1 glass rounded-full border border-white/10 shadow-2xl backdrop-blur-xl transition-all duration-500">
-			<div class="flex items-center justify-between gap-1 sm:gap-2">
-				<a href="/" class="pl-4 pr-3 py-2 text-white font-display font-bold text-lg hover:text-gold-1 transition-colors group flex items-center gap-2">
-					<img src="/media/Jamal_Profile.png" alt="Jamal" class="w-7 h-7 rounded-full border border-white/20 object-cover group-hover:scale-110 group-hover:border-gold-1/50 transition-all duration-300" />
-					<span class="hidden sm:inline text-sm uppercase tracking-widest">Jamal.</span>
+		<nav id="main-nav" class="fixed top-8 left-1/2 -translate-x-1/2 z-[60] w-auto min-w-[120px] sm:min-w-0 px-2 py-2 glass rounded-full border border-white/10 shadow-2xl backdrop-blur-3xl transition-all duration-700">
+			<div class="flex items-center justify-between gap-1 sm:gap-4">
+				<a href="/" class="pl-4 pr-3 py-2 text-white font-display font-black text-xl hover:text-gold transition-colors group flex items-center gap-3">
+					<img src="/media/Jamal_Profile.png" alt="Jamal" class="w-8 h-8 rounded-full border border-white/20 object-cover group-hover:scale-110 group-hover:border-gold/50 transition-all duration-500" />
+					<span class="hidden sm:inline uppercase tracking-tighter">Williams.</span>
 				</a>
 				
 				<!-- Desktop Menu -->
-				<ul class="hidden sm:flex items-center gap-1 pr-1">
+				<ul class="hidden sm:flex items-center gap-1 pr-1 !list-none">
 					{navLinks.map(link => (
-						<li>
+						<li class="before:!content-none">
 							<a 
 								href={link.href} 
-								class={`px-4 py-2 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
+								class={`px-6 py-2 rounded-full font-mono text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 ${
 									link.isActive 
-										? 'bg-white text-black shadow-lg' 
-										: 'text-light-gray/60 hover:text-white hover:bg-white/5'
+										? 'bg-gold text-navy shadow-xl shadow-gold/20' 
+										: 'text-white/40 hover:text-white hover:bg-white/5'
 								}`}
 							>
 								{link.label}
@@ -92,8 +123,8 @@ const currentPath = Astro.url.pathname;
 				</ul>
 
 				<!-- Mobile Toggle -->
-				<button id="nav-toggle" class="sm:hidden flex items-center justify-center p-2 text-white/60 hover:text-white transition-colors" aria-label="Toggle Menu">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<button id="nav-toggle" class="sm:hidden flex items-center justify-center p-2 text-white/40 hover:text-white transition-colors" aria-label="Toggle Menu">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 						<line x1="4" y1="6" x2="20" y2="6" class="line-top transition-all duration-300"></line>
 						<line x1="4" y1="12" x2="20" y2="12" class="line-mid transition-all duration-300"></line>
 						<line x1="4" y1="18" x2="20" y2="18" class="line-bot transition-all duration-300"></line>
@@ -101,17 +132,17 @@ const currentPath = Astro.url.pathname;
 				</button>
 			</div>
 
-			<!-- Mobile Menu Container (Expanded area) -->
-			<div id="mobile-menu" class="hidden sm:hidden px-4 pb-4 pt-2 border-t border-white/5 mt-1">
-				<ul class="flex flex-col gap-2">
+			<!-- Mobile Menu Container -->
+			<div id="mobile-menu" class="hidden sm:hidden px-4 pb-4 pt-4 border-t border-white/5 mt-2">
+				<ul class="flex flex-col gap-3">
 					{navLinks.map(link => (
 						<li>
 							<a 
 								href={link.href} 
-								class={`block px-4 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-bold transition-all duration-300 text-center ${
+								class={`block px-6 py-4 rounded-2xl font-mono text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 text-center ${
 									link.isActive 
-										? 'bg-white text-black shadow-lg' 
-										: 'text-light-gray/60 hover:text-white hover:bg-white/5'
+										? 'bg-gold text-navy shadow-xl' 
+										: 'text-white/40 hover:text-white hover:bg-white/5'
 								}`}
 							>
 								{link.label}
@@ -135,84 +166,57 @@ const currentPath = Astro.url.pathname;
 					// Open
 					menu?.classList.remove('hidden');
 					nav?.classList.remove('rounded-full');
-					nav?.classList.add('rounded-3xl', 'w-[90vw]', 'max-w-[400px]');
+					nav?.classList.add('rounded-[2rem]', 'w-[90vw]', 'max-w-[400px]');
 					
-					// Animate hamburger to X
 					if (toggleLines) {
-						// Top line: diagonal down
-						toggleLines[0].setAttribute('x1', '18');
-						toggleLines[0].setAttribute('y1', '6');
-						toggleLines[0].setAttribute('x2', '6');
-						toggleLines[0].setAttribute('y2', '18');
-						
-						// Middle line: hide
+						toggleLines[0].setAttribute('x1', '18'); toggleLines[0].setAttribute('y1', '6'); toggleLines[0].setAttribute('x2', '6'); toggleLines[0].setAttribute('y2', '18');
 						toggleLines[1].style.opacity = '0';
-						
-						// Bottom line: diagonal up
-						toggleLines[2].setAttribute('x1', '6');
-						toggleLines[2].setAttribute('y1', '6');
-						toggleLines[2].setAttribute('x2', '18');
-						toggleLines[2].setAttribute('y2', '18');
+						toggleLines[2].setAttribute('x1', '6'); toggleLines[2].setAttribute('y1', '6'); toggleLines[2].setAttribute('x2', '18'); toggleLines[2].setAttribute('y2', '18');
 					}
 				} else {
 					// Close
 					menu?.classList.add('hidden');
 					nav?.classList.add('rounded-full');
-					nav?.classList.remove('rounded-3xl', 'w-[90vw]', 'max-w-[400px]');
+					nav?.classList.remove('rounded-[2rem]', 'w-[90vw]', 'max-w-[400px]');
 
-					// Animate back to hamburger
 					if (toggleLines) {
-						// Reset top line
-						toggleLines[0].setAttribute('x1', '4');
-						toggleLines[0].setAttribute('y1', '6');
-						toggleLines[0].setAttribute('x2', '20');
-						toggleLines[0].setAttribute('y2', '6');
-						
-						// Show middle line
+						toggleLines[0].setAttribute('x1', '4'); toggleLines[0].setAttribute('y1', '6'); toggleLines[0].setAttribute('x2', '20'); toggleLines[0].setAttribute('y2', '6');
 						toggleLines[1].style.opacity = '1';
-						toggleLines[1].setAttribute('x1', '4');
-						toggleLines[1].setAttribute('y1', '12');
-						toggleLines[1].setAttribute('x2', '20');
-						toggleLines[1].setAttribute('y2', '12');
-						
-						// Reset bottom line
-						toggleLines[2].setAttribute('x1', '4');
-						toggleLines[2].setAttribute('y1', '18');
-						toggleLines[2].setAttribute('x2', '20');
-						toggleLines[2].setAttribute('y2', '18');
+						toggleLines[2].setAttribute('x1', '4'); toggleLines[2].setAttribute('y1', '18'); toggleLines[2].setAttribute('x2', '20'); toggleLines[2].setAttribute('y2', '18');
 					}
 				}
 			});
 
-			// Re-close on resize if necessary
 			window.addEventListener('resize', () => {
 				if (window.innerWidth >= 640 && !menu?.classList.contains('hidden')) {
 					menu?.classList.add('hidden');
 					nav?.classList.add('rounded-full');
-					nav?.classList.remove('rounded-3xl', 'w-[90vw]', 'max-w-[400px]');
+					nav?.classList.remove('rounded-[2rem]', 'w-[90vw]', 'max-w-[400px]');
 				}
 			});
 		</script>
 
-		<main class={`${fullWidth ? 'w-full' : 'max-w-6xl mx-auto px-6'} relative z-10`}>
+		<main class={`${fullWidth ? 'w-full' : 'max-w-7xl mx-auto px-6'} relative z-10`}>
 			<slot />
 		</main>
 
-		<footer class="max-w-6xl mx-auto px-6 py-20 mt-20 border-t border-white/10 relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
-			<div class="space-y-2 text-center md:text-left">
-				<p class="font-display font-bold text-white uppercase tracking-widest">Jamal Williams</p>
-				<p class="text-xs text-light-gray/40 uppercase tracking-[0.2em]">Digital Architect & Storyteller</p>
+		<footer class="max-w-7xl mx-auto px-8 py-32 mt-32 border-t border-white/10 relative z-10 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16">
+			<div class="space-y-6">
+				<p class="font-architectural text-5xl text-white uppercase tracking-tighter leading-none m-0">Jamal Williams</p>
+				<p class="font-mono text-[10px] text-gold uppercase tracking-[0.4em]">Sovereign Architect & Storyteller</p>
 			</div>
 			
-			<div class="flex gap-8 text-light-gray/40 text-xs uppercase tracking-widest font-bold">
-				<a href="https://linkedin.com/in/jamalwilliams" class="hover:text-gold-1 transition-colors">LinkedIn</a>
-				<a href="https://github.com/JamalWilliams" class="hover:text-gold-1 transition-colors">GitHub</a>
-				<a href="/manifesto" class="hover:text-gold-1 transition-colors underline underline-offset-8 decoration-gold-1/30">Manifesto</a>
+			<div class="flex flex-wrap gap-12 text-white/40 font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
+				<a href="https://linkedin.com/in/jamalwilliams" class="hover:text-gold transition-colors">LinkedIn</a>
+				<a href="https://github.com/JamalWilliams" class="hover:text-gold transition-colors">GitHub</a>
+				<a href="/manifesto" class="hover:text-gold transition-colors underline underline-offset-[12px] decoration-gold/40">The Manifesto</a>
 			</div>
 
-			<p class="text-[10px] text-light-gray/30 uppercase tracking-[0.3em]">
-				&copy; {new Date().getFullYear()} • DETROIT • MI
-			</p>
+			<div class="text-right">
+				<p class="font-mono text-[9px] text-white/20 uppercase tracking-[0.5em]">
+					&copy; {new Date().getFullYear()} • DETROIT • MI • v3.5.0
+				</p>
+			</div>
 		</footer>
 	</body>
 </html>
