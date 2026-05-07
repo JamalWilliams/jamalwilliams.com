@@ -10,11 +10,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     server: {
       fs: {
-        // Allow serving files from the vault directory
-        allow: [
-          '.',
-          process.env.VAULT_CONTENT_PATH || ''
-        ]
+        allow: ['.']
       }
     }
   }

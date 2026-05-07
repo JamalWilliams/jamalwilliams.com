@@ -6,28 +6,10 @@ import 'dotenv/config';
 
 /**
  * ARCHITECTURAL RESOLUTION:
- * In local dev, we point to the absolute path of the external Obsidian Vault.
- * In Cloudflare CI/GitHub Actions, we point to a bundled ./Vault folder in the repo.
+ * We now use the standard local src/content directory as the source of truth.
+ * The Vault-as-CMS pattern has been moved into the repository.
  */
-const getVaultPath = () => {
-  const envPath = process.env.VAULT_CONTENT_PATH;
-  
-  // 1. If we have an ENV var and it exists, use it.
-  if (envPath && fs.existsSync(envPath)) return envPath;
-
-  // 2. Check for a local "repo-relative" vault (used in CI)
-  const repoRelative = path.resolve('./Vault/Websites/jamalwilliams.com');
-  if (fs.existsSync(repoRelative)) return repoRelative;
-
-  // 3. Check for global Vault (Local Dev)
-  const globalVault = '/Users/jamalwilliams/Vault/Websites/jamalwilliams.com';
-  if (fs.existsSync(globalVault)) return globalVault;
-
-  // 4. Fallback to a safe default within the src folder
-  return './src/content';
-};
-
-const VAULT_ROOT = getVaultPath();
+const VAULT_ROOT = path.resolve('./src/content');
 console.log(`[Jamal 3.0] Content Resolution: ${VAULT_ROOT}`);
 
 const posts = defineCollection({

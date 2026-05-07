@@ -1,26 +1,24 @@
-# Developer Context: jamalwilliams.com
+# Developer Context: jamalwilliams.com (v3.1)
 
-## Architecture (Jamal 3.0)
+## Architecture (Jamal 3.1)
 - **Framework**: Astro 5.0+ (Static Site Generation / Content Layer API)
-- **CMS**: Headless via **Obsidian Vault** (`Vault/Websites/jamalwilliams.com/`)
-- **Integration**: Framework-native (No sync scripts or symlinks)
+- **CMS**: Repository-Local (`src/content/`)
+- **Integration**: Standard Astro Content Collections (No external vault dependencies)
 - **Styling**: Tailwind CSS v4 (via `@tailwindcss/vite` plugin)
 - **Deployment**: Configured for Cloudflare
 
-## Headless CMS Implementation
-- **Loader**: Astro's native `glob` loader with `base` set to the Vault path.
-- **Environment**: `VAULT_CONTENT_PATH` defined in `.env`.
-- **Vite Security**: `server.fs.allow` configured in `astro.config.mjs` to authorize the external Vault path.
-- **Media**: External `media/` folder linked directly to `public/media/` (or served via Vite config).
+## Content Implementation
+- **Loader**: Astro's native `glob` loader with `base` set to the local `src/content` path.
+- **Source of Truth**: All markdown, media, and data assets are now tracked directly in the Git repository.
+- **Staging Parity**: Moving content into the repo ensures that staging and production environments always have access to the latest content without manual sync.
 
-## Folder Structure (Obsidian Vault)
-- `site/pages/`: Main site pages (about, principles, stack, homepage).
-- `site/practice/`: Business pillar entries (jwi, nl, sovereign-life).
-- `site/posts/`: Blog content.
-- `site/media/`: All images and assets (accessible via `/media/`).
+## Folder Structure (src/content)
+- `pages/`: Main site pages (about, principles, stack, homepage).
+- `practice/`: Business pillar entries (jwi, nl, sovereign-life).
+- `posts/`: Blog content.
 
 ## Dynamic Logic
-- **Homepage**: Content and hero image driven by `site/pages/homepage.md`.
+- **Homepage**: Content and hero image driven by `src/content/pages/homepage.md`.
 - **Navigation**: Sticky glassmorphic pill driven by the `menu` array in `homepage.md`.
 - **Ordering**: Controlled via the `order` field in page frontmatter.
 
