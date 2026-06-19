@@ -9,18 +9,18 @@ import { getCollection, getEntry } from 'astro:content';
 
 const homepage = await getEntry('pages', 'homepage');
 
-const heroHeadline = homepage?.data.headline || "SOVEREIGN";
-const heroSubHeadline = homepage?.data.subHeadline || "BY DESIGN.";
-const heroDescription = homepage?.data.heroDescription || "I am an unapologetic generalist. For over two decades, I've bridged the gap between complex code and soulful storytelling. I architect the digital and creative systems that empower radical autonomy.";
+const heroHeadline = homepage?.data.headline || "ENGINEERING";
+const heroSubHeadline = homepage?.data.subHeadline || "FREEDOM.";
+const heroDescription = homepage?.data.heroDescription || "I am an unapologetic builder in the trenches. For over two decades, I've bridged the gap between complex software architecture and deep, human storytelling. I build digital sanctuaries that cut through the corporate hype and protect your attention.";
 const heroImage = homepage?.data.heroImage || "/images/hero_graphic_transparent.png";
-const practiceQuote = homepage?.data.practiceQuote || "Digital architecture is more than just code; it is the construction of ecosystems that prioritize freedom and integrity.";
-const manifestoQuote = homepage?.data.manifestoQuote || "In a world of noise, clarity is the ultimate rebellion. I architect systems that allow the signal to be heard.";
+const practiceQuote = homepage?.data.practiceQuote || "Technology should serve your life goals, not dictate them. Real architecture is about building systems that prioritize freedom and creative joy over bloated features.";
+const manifestoQuote = homepage?.data.manifestoQuote || "In a world obsessed with AI agent swarms and endless SaaS subscriptions, clarity is the ultimate rebellion. I architect systems that allow the signal to be heard.";
 
 const practices = await getCollection('practice');
-const marqueeItems = ["Sovereign Storytelling", "Agentic Systems", "Radical Rest", "Digital Architecture", "Detroit Grit"];
+const marqueeItems = ["Systemic Architecture", "Agentic Workflows", "Radical Autonomy", "Digital Sanctuaries", "Detroit Grit"];
 ---
 
-<Layout title="Jamal Williams | Sovereign Architect" fullWidth={true}>
+<Layout title="Jamal Williams | Engineering Freedom" fullWidth={true}>
 	<Hero 
 		headline={heroHeadline}
 		subHeadline={heroSubHeadline}

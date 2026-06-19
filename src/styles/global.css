@@ -3,7 +3,7 @@
 @theme {
   /* Sovereign Palette */
   --color-navy: #14213D;
-  --color-gold: #FCA311;
+  --color-gold: #FCCA11;
   --color-glow: #FCDE11;
   --color-white: #FFFFFF;
   --color-gray: #E5E5E5;
@@ -11,6 +11,7 @@
   /* Typography */
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --animate-fade-in: fade-in 1.5s ease-out forwards;
@@ -52,10 +53,10 @@
   h4 { @apply font-sans font-bold text-xl text-white uppercase tracking-wider mb-3; }
   h5 { @apply font-mono text-xs text-gold uppercase tracking-[0.3em] mb-2; }
 
-  p { @apply text-lg md:text-xl leading-relaxed font-light mb-6 opacity-70; }
+  p { @apply font-serif text-lg md:text-xl leading-relaxed font-light mb-6 opacity-70; }
 
   blockquote {
-    @apply border-l-4 border-gold bg-white/5 py-8 px-12 my-12 italic text-2xl text-white rounded-r-3xl;
+    @apply font-serif border-l-4 border-gold bg-white/5 py-8 px-12 my-12 italic text-2xl text-white rounded-r-3xl;
   }
 }
 

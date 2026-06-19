@@ -35,7 +35,6 @@
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/addon-interactions": "8.4.7",
     "@storybook/addon-links": "8.4.7",
-    "@storybook/addon-vitest": "0.1.2",
     "@storybook/builder-vite": "8.4.7",
     "vite": "^7",
     "vitest": "^4.1.3"

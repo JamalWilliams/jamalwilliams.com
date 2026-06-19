@@ -1,11 +1,11 @@
 ---
 title: Homepage
-headline: FREEDOM
-subHeadline: THROUGH STRUCTURE.
-heroDescription: I am an unapologetic generalist and systems strategist. For over two decades, I've bridged the gap between complex code and the humans who run businesses. I build the technical foundations that get you out of the weeds, so you can stop wrestling with software and get back the freedom to actually run your business—and your life.
+headline: JAMAL WILLIAMS.
+subHeadline: ENGINEERING FREEDOM.
+heroDescription: I am an unapologetic builder in the trenches. For over two decades, I've bridged the gap between complex software architecture and deep, human storytelling. I build digital sanctuaries that cut through the corporate hype and protect your attention—giving you the leverage to build a legacy with zero operational friction.
 heroImage: /images/hero_graphic_transparent.png
-practiceQuote: Technology is just a tool. If it's not buying back your time or your peace, it's just noise.
-manifestoQuote: In a world of digital chaos, clarity is the ultimate leverage. I build the infrastructure so you don't have to think about the infrastructure.
+practiceQuote: Technology is just noise if it isn't buying back your creative time, focus, and peace. I build the systems that return your focus to execution.
+manifestoQuote: In an era of framework bloat, developer lock-in, and administrative friction, architectural clarity is your only real leverage. I build systems that run forever—by design.
 order: 0
 menu:
 - about

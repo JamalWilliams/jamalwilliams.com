@@ -1,7 +1,7 @@
 ---
 title: Speaking
-headline: THE SOVEREIGN ARCHITECT
-subHeadline: BRIDGING CODE AND SOUL.
+headline: ENGINEERING FREEDOM
+subHeadline: THROUGH STRUCTURE.
 heroDescription: I speak at the intersection of engineering leadership, digital sovereignty, and the future of work. I help leaders and makers build systems that allow for the absolute ownership of their narrative.
 order: 5
 menu:
@@ -24,7 +24,7 @@ seso_tags:
 
 # Signature Talks
 
-### 1. The Sovereign Architect: Why Your Tech Stack is Your Business Model
+### 1. Engineering Freedom: Why Your Tech Stack is Your Business Model
 In an era of "Context Creep" and platform dependency, true freedom requires an architectural shift. I share the frameworks I’ve used to build a 20-year digital legacy using Astro, Obsidian, and AI orchestration.
 *   **Best for:** Developers, Creatives, and Solopreneurs.
 
@@ -39,5 +39,5 @@ Can a luxury boudoir studio run with 80% automation without losing its soul? I w
 ---
 
 # Book Jamal
-Ready to bring the Sovereign Architect to your event?
+Ready to bring Engineering Freedom to your event?
 [Book a Discovery Call](https://link-to-your-ghl-booking-form.com)

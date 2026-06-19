@@ -1,13 +1,13 @@
 ---
-name: Jamal Williams (The Sovereign Architect)
+name: Jamal Williams: Engineering Freedom
 description: Personal brand of Jamal Williams — Senior Engineer, Strategic Architect, and Collaborative Facilitator.
 status: active
-version: 1.1.0
+version: 1.2.0
 author: Jamal Williams
 ---
 
 # Overview
-The personal brand reflects a **"Sovereign Architect"** persona. It bridges the gap between Senior Engineering and Detroit Creative grit. The goal is to design architectures—digital and personal—that prioritize freedom and self-determination.
+The personal brand reflects **"Engineering Freedom"** as the core value proposition. It bridges the gap between Senior Engineering and Detroit Creative grit. The goal is to design architectures—digital and personal—that prioritize freedom and self-determination.
 
 # Visuals & Specs
 - **Mood:** High-Signal, Zero-Noise, Architectural, Pragmatic.
@@ -37,8 +37,13 @@ The personal brand reflects a **"Sovereign Architect"** persona. It bridges the 
 - **Glass-morphism:** Highly refined cards with `backdrop-blur-2xl` for "Sanctuary" spaces.
 - **Architectural Geometry:** Large-radius corners (`rounded-[4rem]`) to create a molded, premium feel.
 
-# The 4 Facets (Content Strategy)
-1. **The Master Builder:** Engineering systems and code.
-2. **The Collaborative Facilitator:** Strategic support and exit planning ("I got you").
-3. **The Snarky Sage:** Calling out hustle-culture BS with Detroit grit.
-4. **The Guardian:** Protecting sovereignty and self-determination.
+# The 5 Content Lanes (Behind-the-Systems Work)
+1. **Business Systems:** Architectural design and implementation of enterprise-grade systems that scale without burnout.
+2. **App Development:** Full-stack development practices and patterns for building robust, maintainable applications.
+3. **Game Development:** Technical architecture and systems design for interactive experiences and game mechanics.
+4. **Photography:** Technical and artistic foundations of visual storytelling, including lighting, composition, and post-processing systems.
+5. **Data Ownership:** Infrastructure and strategies for maintaining control over personal and business data in an increasingly centralized world.
+
+## Public Content Mandate
+- **Included:** Technical systems, development practices, architectural patterns, creative processes, and data ownership strategies.
+- **Excluded:** Competitive strategy, private business details, client-specific information, and proprietary methodologies.

@@ -1,4 +1,4 @@
-# Plan: Sovereign Architect UI Transformation
+# Plan: Jamal Williams: Engineering Freedom — UI Transformation
 
 ## Objective
 Transition the current "Tech/Developer" UI into a high-end "Architectural/Editorial" experience inspired by the Vela Armon, Hotle, and Woodcraft designs.
@@ -16,7 +16,7 @@ Transition the current "Tech/Developer" UI into a high-end "Architectural/Editor
 ## Phase 2: Hero Section ("Vela Armon" Style)
 - [x] **Implement Overlapping Typography**:
     - Use `hero_graphic_transparent.png` with massive text behind and in front of it.
-    - Headline: "SOVEREIGN" (Display Black) + "by design." (Secondary).
+    - Headline: "FREEDOM" (Display Black) + "through structure." (Secondary).
     - New Button Style: Pill shapes with embedded circle icons.
 
 ## Phase 3: Practice Showcase ("Hotle" Style)

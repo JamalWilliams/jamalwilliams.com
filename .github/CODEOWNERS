@@ -1,0 +1,9 @@
+# Each repo owner is responsible for all code
+* @JamalWilliams
+
+# Deployment workflows require owner review
+.github/workflows/ @JamalWilliams
+
+# Documentation and runbooks
+docs/ @JamalWilliams
+VALIDATION.md @JamalWilliams

@@ -10,7 +10,7 @@ interface Props {
 	fullWidth?: boolean;
 }
 
-const { title, description = "Sovereign Architect & Storyteller.", fullWidth = false } = Astro.props;
+const { title, description = "Engineering Systems for Life, Story, and Business.", fullWidth = false } = Astro.props;
 
 // Fetch navigation settings from homepage
 const homepage = await getEntry('pages', 'homepage');
@@ -79,7 +79,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700;900&family=JetBrains+Mono&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-navy text-gray font-sans selection:bg-gold/30 relative min-h-screen overflow-x-hidden pt-24 sm:pt-32">
 		<!-- Subtle Grain Overly -->
@@ -87,7 +87,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
 		<!-- Background Branding Mark (Architectural Watermark) -->
 		<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none flex items-center justify-center opacity-[0.03]">
-			<span class="font-architectural text-[28vw] leading-none whitespace-nowrap text-white">SOVEREIGN</span>
+			<span class="font-architectural text-[28vw] leading-none whitespace-nowrap text-white">FREEDOM</span>
 		</div>
 
 		<!-- Decorative background glows -->
@@ -203,7 +203,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 		<footer class="max-w-7xl mx-auto px-8 py-32 mt-32 border-t border-white/10 relative z-10 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16">
 			<div class="space-y-6">
 				<p class="font-architectural text-5xl text-white uppercase tracking-tighter leading-none m-0">Jamal Williams</p>
-				<p class="font-mono text-[10px] text-gold uppercase tracking-[0.4em]">Sovereign Architect & Storyteller</p>
+				<p class="font-mono text-[10px] text-gold uppercase tracking-[0.4em]">Engineering Freedom</p>
 			</div>
 			
 			<div class="flex flex-wrap gap-12 text-white/40 font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
